@@ -3,6 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
 import Jumbotron from "../components/Jumbotron";
 import API from "../utils/API";
+import Nav from "../components/Nav";
 
 function Detail(props) {
   const [book, setBook] = useState({});
@@ -18,6 +19,11 @@ function Detail(props) {
 
   return (
     <Container fluid>
+      <Nav
+        id={props.id}
+        firstName={props.firstName}
+        lastName={props.lastName}
+      />
       <Row>
         <Col size="md-12">
           <Jumbotron>
