@@ -6,7 +6,7 @@ import "./style.css";
 function UpdateBtn(props) {
   return (
     <span className="update-btn" {...props} role="button" tabIndex="0">
-      <i class="far fa-edit"></i>{" "}
+      <i className="far fa-edit"></i>{" "}
     </span>
   );
 }

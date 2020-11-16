@@ -62,8 +62,7 @@ function Books(props) {
         title: formObject.title,
         author: formObject.author,
         description: formObject.description,
-        user: props.id, ///ALG user is being updated with props.id
-        ///on signup, there is no props.id, so the saveBook fails
+        user: props.id, ///ALG user id is being updated with props.id
       })
         .then((res) => loadBooks())
         .catch((err) => console.log(err));
@@ -122,7 +121,13 @@ function Books(props) {
                       {book.title} by {book.author}
                     </strong>
                   </Link>
+                  {"             "}
                   {/* <DeleteBtn onClick={() => deleteBook(book._id)} /> */}
+                  <Link to={"/search"}>
+                    <span className="search-btn">
+                      <i class="fas fa-search fa-2x fa-pull-right"></i>
+                    </span>
+                  </Link>
                 </ListItem>
               ))}
             </List>
