@@ -87,13 +87,13 @@ function UserBooks(props) {
             <Input
               onChange={handleInputChange}
               name="author"
-              placeholder="Location (required)"
+              placeholder="Author (required)"
               value={formObject.author}
             />
             <TextArea
               onChange={handleInputChange}
               name="description"
-              placeholder="Description (Optional)"
+              placeholder="Review (Optional)"
               value={formObject.description}
             />
             <FormBtn
