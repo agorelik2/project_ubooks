@@ -5,8 +5,8 @@ import "./style.css";
 // That way we don't have to define them all individually
 function UpdateBtn(props) {
   return (
-    <span className="delete-btn" {...props} role="button" tabIndex="0">
-      Update
+    <span className="update-btn" {...props} role="button" tabIndex="0">
+      <i class="far fa-edit"></i>{" "}
     </span>
   );
 }

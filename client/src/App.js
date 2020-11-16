@@ -46,7 +46,7 @@ class App extends Component {
     } else {
       tempuser.id = userObject.id;
     }
-    this.setState(tempuser); //this.setState({ user: userObject })
+    this.setState(tempuser); //this.setState({ user: userObject }) OR this.setState({ user: tempuser })?
     console.log(userObject);
   }
 

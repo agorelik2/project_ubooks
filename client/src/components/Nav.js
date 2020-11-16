@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, Redirect } from "react-router-dom";
+import { Link, NavLink, Redirect } from "react-router-dom";
 import { withRouter } from "react-router-dom";
 import API from "../utils/API";
 
@@ -50,39 +50,41 @@ function Nav(props) {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav mr-auto">
             <li className="nav-item">
-              <Link
+              <NavLink
                 to="/books"
-                // style={{ color: "white" }}
-                // activestyle={{ color: "red" }}
+                // style={{ color: "green" }}
+                activeStyle={{ color: "red" }}
                 className="nav-link"
               >
-                Books
-              </Link>
+                <i class="fas fa-book-reader"></i> Books
+              </NavLink>
             </li>
             <li className="nav-item">
-              <Link
+              <NavLink
                 to="/search"
                 // style={{ color: "white" }}
-                // activestyle={{ color: "red" }}
+                activeStyle={{ color: "red" }}
                 className="nav-link"
               >
+                <i class="fas fa-search"></i>
                 Search
-              </Link>
+              </NavLink>
             </li>
             <li className="nav-item">
-              <Link
+              <NavLink
                 to="/favorites"
                 // style={{ color: "white" }}
-                // activestyle={{ color: "red" }}
+                activeStyle={{ color: "red" }}
                 className="nav-link"
               >
+                <i class="far fa-heart"></i>
                 Favorites
-              </Link>
+              </NavLink>
             </li>
             <li className="nav-item">
-              <Link to="/" className="nav-link" onClick={logOut}>
+              <NavLink to="/" className="nav-link" onClick={logOut}>
                 <i className="fas fa-sign-out-alt"></i> Log Out
-              </Link>
+              </NavLink>
             </li>
           </ul>
         </div>
