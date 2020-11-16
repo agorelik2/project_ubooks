@@ -72,7 +72,7 @@ function Books(props) {
 
   return (
     <Container fluid>
-      <Nav logOut={props.logOut} id={props.id} />
+      <Nav id={props.id} />
       <Row>
         <Col size="md-6">
           <Jumbotron>

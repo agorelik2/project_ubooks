@@ -4,6 +4,7 @@ import API from "../utils/API";
 import { List, ListItem } from "../components/List";
 import DeleteBtn from "../components/DeleteBtn";
 import { Col, Row, Container } from "../components/Grid";
+import Nav from "../components/Nav";
 
 function Favorites(props) {
   const [savedBooks, setSavedBooks] = useState([]);
@@ -27,6 +28,7 @@ function Favorites(props) {
 
   return (
     <Container fluid>
+      <Nav id={props.id} />
       <Row>
         <Col size="md-10">
           <Jumbotron className="fluid jumbtop">

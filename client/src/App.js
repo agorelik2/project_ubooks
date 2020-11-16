@@ -10,12 +10,7 @@ import Detail from "./pages/detail";
 import Favorites from "./pages/favorites";
 import Search from "./pages/search";
 
-// import NoMatch from "./pages/NoMatch";
-//import NavBar from "./components/NavBar";
-
 import "./App.css";
-
-//import { redirect } from "../../passport/localStrategy";
 
 class App extends Component {
   //Constructor for states
@@ -86,28 +81,6 @@ class App extends Component {
       }
     });
   };
-
-  // logOut = (e) => {
-  //   e.preventDefault();
-  //   console.log("logging out");
-  //   API.logout().then((res) => {
-  //     this.setState({
-  //       isLoggedIn: false,
-  //       email: "",
-  //       firstName: "",
-  //       lastName: "",
-  //       id: null,
-  //       redirect: true,
-  //     });
-
-  //     // console.log("go somewhere else");
-  //     if (res) {
-  //       console.log("successfully logged out");
-  //       //this.props.history.push("/signin");
-  //       //this.context.router.replace("/signin");
-  //     }
-  //   });
-  // };
 
   render() {
     return (
