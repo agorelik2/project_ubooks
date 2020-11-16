@@ -10,6 +10,11 @@ import Nav from "../components/Nav";
 function Favorites(props) {
   const [savedBooks, setSavedBooks] = useState([]);
 
+  console.log("User ID:");
+  console.log(props.id);
+  console.log(props.firstName);
+  console.log(props.lastName);
+
   // const { id } = useParams()
   useEffect(() => {
     loadFavorites();
@@ -30,7 +35,11 @@ function Favorites(props) {
 
   return (
     <Container fluid>
-      <Nav id={props.id} />
+      <Nav
+        id={props.id}
+        firstName={props.firstName}
+        lastName={props.lastName}
+      />
       <Row>
         <Col size="md-10">
           <Jumbotron className="fluid jumbtop">

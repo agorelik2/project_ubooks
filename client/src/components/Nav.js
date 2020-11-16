@@ -32,7 +32,7 @@ function Nav(props) {
   } else {
     return (
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a className="navbar-brand" href="/">
+        <a className="navbar-brand" href="/books">
           URead
         </a>
         <button
@@ -50,27 +50,39 @@ function Nav(props) {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav mr-auto">
             <li className="nav-item">
-              <a className="nav-link" href="/books">
+              <Link
+                to="/books"
+                // style={{ color: "white" }}
+                // activestyle={{ color: "red" }}
+                className="nav-link"
+              >
                 Books
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/search">
+              <Link
+                to="/search"
+                // style={{ color: "white" }}
+                // activestyle={{ color: "red" }}
+                className="nav-link"
+              >
                 Search
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/favorites">
+              <Link
+                to="/favorites"
+                // style={{ color: "white" }}
+                // activestyle={{ color: "red" }}
+                className="nav-link"
+              >
                 Favorites
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
               <Link to="/" className="nav-link" onClick={logOut}>
                 <i className="fas fa-sign-out-alt"></i> Log Out
               </Link>
-              {/* <a className="nav-link" href="/logout">
-              Logout
-            </a> */}
             </li>
           </ul>
         </div>

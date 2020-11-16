@@ -72,7 +72,11 @@ function Books(props) {
 
   return (
     <Container fluid>
-      <Nav id={props.id} />
+      <Nav
+        id={props.id}
+        firstName={props.firstName}
+        lastName={props.lastName}
+      />
       <Row>
         <Col size="md-6">
           <Jumbotron>
@@ -118,7 +122,7 @@ function Books(props) {
                       {book.title} by {book.author}
                     </strong>
                   </Link>
-                  <DeleteBtn onClick={() => deleteBook(book._id)} />
+                  {/* <DeleteBtn onClick={() => deleteBook(book._id)} /> */}
                 </ListItem>
               ))}
             </List>

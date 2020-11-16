@@ -64,7 +64,11 @@ function Search(props) {
 
   return (
     <Container fluid>
-      <Nav id={props.id} />
+      <Nav
+        id={props.id}
+        firstName={props.firstName}
+        lastName={props.lastName}
+      />
       <Row>
         <Col size="md-10">
           <Jumbotron className="jumbtop">
