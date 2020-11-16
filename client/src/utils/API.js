@@ -42,7 +42,9 @@ export default {
     console.log(favoriteData);
     return axios.post("/api/favorites", favoriteData);
   },
-
+  getFavoritesByUser: function () {
+    return axios.get("/api/favorites/uid"); //ALG get favorite books by UID
+  },
   login: function (userData) {
     return axios.post("/api/users/login", userData);
   },

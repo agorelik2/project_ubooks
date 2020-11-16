@@ -9,7 +9,6 @@ import UserBooks from "./pages/userBooks";
 import Detail from "./pages/detail";
 import Favorites from "./pages/favorites";
 import Search from "./pages/search";
-
 import "./App.css";
 
 class App extends Component {

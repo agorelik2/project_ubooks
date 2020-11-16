@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { withRouter } from "react-router-dom";
 import Jumbotron from "../components/Jumbotron";
 import API from "../utils/API";
 import { List, ListItem } from "../components/List";
@@ -15,7 +16,8 @@ function Favorites(props) {
   }, []);
 
   function loadFavorites() {
-    API.getFavorites()
+    //API.getFavorites()
+    API.getFavoritesByUser()
       .then((res) => setSavedBooks(res.data))
       .catch((err) => console.log(err));
   }
@@ -74,4 +76,4 @@ function Favorites(props) {
     </Container>
   );
 }
-export default Favorites;
+export default withRouter(Favorites);
