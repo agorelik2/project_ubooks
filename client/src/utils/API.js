@@ -20,6 +20,8 @@ export default {
   },
 
   updateBook: function (id) {
+    console.log("In API.js updateBook function", id);
+    console.log("////////////////////////////");
     return axios.put(`/api/books/${id}`);
   },
 

@@ -35,7 +35,16 @@ function UserBooks(props) {
   //READ Book record, then LOAD FORM with: the book title, author and description
   function updateBookForm(id) {
     API.getBook(id)
-      .then((res) => console.log(res))
+      // .then((res) => console.log(res))
+      .then((res) => {
+        console.log(res);
+        setFormObject({
+          title: res.data.title,
+          author: res.data.author,
+          description: res.data.description,
+          id: res.data._id,
+        });
+      })
       .catch((err) => console.log(err));
   }
 
@@ -57,8 +66,10 @@ function UserBooks(props) {
   function handleFormSubmit(event) {
     event.preventDefault();
     if (formObject.title && formObject.author) {
-      //Change from save to update !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-      const id = formObject._id;
+      console.log("Form Object ID: ", formObject.id);
+      const id = formObject.id;
+      console.log("Updated Book ID: ", id);
+      console.log("+++++++++++++++++++++++++++");
       API.updateBook(id)
         .then((res) => loadUserBooks())
         .catch((err) => console.log(err));

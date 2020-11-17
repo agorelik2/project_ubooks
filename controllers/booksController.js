@@ -45,6 +45,10 @@ module.exports = {
   // },
 
   update: function (req, res) {
+    console.log(
+      "Inside book controller, update function,checking id: ",
+      req.params.id
+    );
     db.Book.findOneAndUpdate({ _id: req.params.id }, req.body)
       .then((dbBookModel) => res.json(dbBookModel))
       .catch((err) => res.status(422).json(err));
@@ -69,10 +73,10 @@ module.exports = {
 
   //ALG Get Books by User ID
   getUserBooks: function (req, res) {
-    console.log("User Id:");
-    console.log("////////////////");
-    console.log(req.user._id);
-    console.log(req.session.passport.user);
+    // console.log("User Id:");
+    // console.log("////////////////");
+    // console.log(req.user._id);
+    // console.log(req.session.passport.user);
 
     db.User.find({
       // _id: req.session.passport.user,
