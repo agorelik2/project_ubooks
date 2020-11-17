@@ -12,6 +12,18 @@ import Nav from "../components/Nav";
 function Search(props) {
   const [books, setBooks] = useState("");
   const [result, setResult] = useState([]);
+
+  // if (props.location.state !== null) {
+  //   const { term } = props.location.state;
+  //   console.log(term);
+  // }
+
+  // const [term, setTerm] = useState(props.location.state.term);
+  console.log(props.location);
+  const [searchTerm, setSearchTerm] = useState(
+    props.location?.state?.term ?? ""
+  );
+
   //const apiKey = process.env.REACT_APP_API_KEY;
   const apiKey = "AIzaSyBT2wxHdikLLSHbqf_UqgH33CI5XJd4EpI";
 
@@ -25,10 +37,12 @@ function Search(props) {
   }
 
   const searchGoogleBooks = async () => {
+    console.log(books, "in search GoogleBooks function", searchTerm);
+    const search = books || searchTerm;
     await axios
       .get(
         "https://www.googleapis.com/books/v1/volumes?q=" +
-          books +
+          search +
           "&key=" +
           apiKey
       )
@@ -79,6 +93,7 @@ function Search(props) {
             onSubmit={handleSubmit}
             name="title"
             placeholder="Title (required)"
+            defaultValue={searchTerm}
           />
           <FormBtn onClick={handleSubmit}>Search Book</FormBtn>
           {result.length ? (
