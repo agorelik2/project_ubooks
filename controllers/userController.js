@@ -13,7 +13,9 @@ module.exports = {
     //const id = req.params.id !== "undefined" ? req.params.id : req.user._id;
     // console.log("user id");
     // console.log(typeof id);
-    // console.log(req.params.id);
+    console.log("Inside userController findById");
+    console.log(req.params.id);
+    console.log("+++++++++++++++++++");
     // console.log(req.user._id);
     db.User.findById(req.params.id)
       // .populate("book") //AG updated user controller

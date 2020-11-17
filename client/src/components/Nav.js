@@ -56,7 +56,7 @@ function Nav(props) {
                 activeStyle={{ color: "red" }}
                 className="nav-link"
               >
-                <i class="fas fa-book-reader"></i> Books
+                <i className="fas fa-book-reader"></i> Books
               </NavLink>
             </li>
             <li className="nav-item">
