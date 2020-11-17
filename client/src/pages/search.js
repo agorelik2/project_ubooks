@@ -24,8 +24,8 @@ function Search(props) {
     props.location?.state?.term ?? ""
   );
 
-  //const apiKey = process.env.REACT_APP_API_KEY;
-  const apiKey = "AIzaSyBT2wxHdikLLSHbqf_UqgH33CI5XJd4EpI";
+  const apiKey = process.env.REACT_APP_API_KEY;
+  //const apiKey = "AIzaSyBT2wxHdikLLSHbqf_UqgH33CI5XJd4EpI";
 
   console.log("User ID:");
   console.log(props.id);
