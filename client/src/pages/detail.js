@@ -14,39 +14,24 @@ function Detail(props) {
   const { id } = useParams();
 
   useEffect(() => {
-    loadRecords();
+    loadBook();
   }, []);
 
-  function loadRecords() {
-    loadBook();
-    loadRuser();
-  }
-
-  function loadBook() {
-    API.getBook(id)
-      .then((res) => setBook(res.data))
-      .catch((err) => console.log(err));
-  }
-  console.log("Person who recommended book");
-  console.log({ book });
-  console.log(book.user);
-  console.log("===============================");
-
-  const uid = book.user;
-  console.log("UserId:", uid);
-
-  function loadRuser() {
+  function loadRuser(uid) {
     API.getUser(uid)
       .then((ures) => setRuser(ures.data))
       .catch((err) => console.log(err));
   }
-  console.log("First: ", ruser.firstName);
 
-  // useEffect(() => {
-  //   API.getBook(id)
-  //     .then((res) => setBook(res.data))
-  //     .catch((err) => console.log(err));
-  // }, []);
+  function loadBook() {
+    API.getBook(id)
+      .then((res) => {
+        const uid = res.data.user;
+        loadRuser(uid);
+        setBook(res.data);
+      })
+      .catch((err) => console.log(err));
+  }
 
   return (
     <Container fluid>

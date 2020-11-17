@@ -32,11 +32,10 @@ function UserBooks(props) {
       .catch((err) => console.log(err));
   }
 
-  // Updates a book with a given id, then reloads books from the db
-  function updateBook(id) {
-    //LOAD FORM with: the book title, author and description
-    API.updateBook(id)
-      .then((res) => loadUserBooks())
+  //READ Book record, then LOAD FORM with: the book title, author and description
+  function updateBookForm(id) {
+    API.getBook(id)
+      .then((res) => console.log(res))
       .catch((err) => console.log(err));
   }
 
@@ -53,17 +52,14 @@ function UserBooks(props) {
     setFormObject({ ...formObject, [name]: value });
   }
 
-  // When the form is submitted, use the API.saveBook method to save the book data
+  // When the form is submitted, use the API.updateBook method to update the book data
   // Then reload books from the database
   function handleFormSubmit(event) {
     event.preventDefault();
     if (formObject.title && formObject.author) {
       //Change from save to update !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-      API.saveBook({
-        title: formObject.title,
-        author: formObject.author,
-        description: formObject.description,
-      })
+      const id = formObject._id;
+      API.updateBook(id)
         .then((res) => loadUserBooks())
         .catch((err) => console.log(err));
     }
@@ -82,19 +78,19 @@ function UserBooks(props) {
               onChange={handleInputChange}
               name="title"
               placeholder="Title (required)"
-              value={formObject.title}
+              defaultValue={formObject.title}
             />
             <Input
               onChange={handleInputChange}
               name="author"
               placeholder="Author (required)"
-              value={formObject.author}
+              defaultValue={formObject.author}
             />
             <TextArea
               onChange={handleInputChange}
               name="description"
               placeholder="Review (Optional)"
-              value={formObject.description}
+              defaultValue={formObject.description}
             />
             <FormBtn
               disabled={!(formObject.author && formObject.title)}
@@ -121,7 +117,7 @@ function UserBooks(props) {
                     </strong>
                   </Link>
                   <DeleteBtn onClick={() => deleteBook(book._id)} />
-                  <UpdateBtn onClick={() => updateBook(book._id)} />
+                  <UpdateBtn onClick={() => updateBookForm(book._id)} />
                 </ListItem>
               ))}
             </List>
