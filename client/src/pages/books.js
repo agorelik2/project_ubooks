@@ -95,7 +95,7 @@ function Books(props) {
           <Jumbotron>
             <h1>Check Out the Recommended Books</h1>
             <Link to={"/books/uid"}>
-              <h3>View Books Recommended by {props.firstName}</h3>
+              <h4>View Books Recommended by {props.firstName}</h4>
             </Link>
           </Jumbotron>
           {books.length ? (

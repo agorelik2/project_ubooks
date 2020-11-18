@@ -86,111 +86,96 @@ function SignUp(props) {
   } else {
     //show sign-up page
     return (
-      <Container className="my-5">
-        <h1
-          style={{
-            textAlign: "center",
-            paddingTop: "100px",
-            paddingBottom: "100px",
-          }}
-        >
-          Welcome to URead! Please sign up to share your favorite books, write
-          reviews, and find new books to read!
-        </h1>
-        <Row>
-          <Col>
-            <div className="SignupForm">
-              <form className="form-horizontal">
+      <Container>
+        <div className="section-content m-5">
+          <h1 className="section-header">
+            Share your favorite books with{" "}
+            <span
+              className="content-header wow fadeIn "
+              data-wow-delay="0.2s"
+              data-wow-duration="2s"
+            >
+              {" "}
+              URead
+            </span>
+          </h1>
+          <h3 className="subt">sign up and start sharing</h3>
+        </div>
+        <div className="container w-50 shadow-lg round flex-d ">
+          <div className="row justify-content-center p-5 ">
+            <div className="contact-section col-lg-6 p-0 m-0 ">
+              <form>
                 <div className="form-group">
-                  <div className="col-1 col-ml-auto">
-                    <label className="form-label" htmlFor="firstName">
-                      First Name:
-                    </label>
-                  </div>
-                  <div className="col-3 col-mr-auto">
-                    <input
-                      className="form-input"
-                      type="text"
-                      id="firstName"
-                      placeholder="John"
-                      name="firstName"
-                      value={firstName}
-                      onChange={handleFirstNameInput}
-                    />
-                  </div>
+                  <label className="form-label" htmlFor="firstName">
+                    First Name:
+                  </label>
+                  <input
+                    className="form-control"
+                    type="text"
+                    id="firstName"
+                    placeholder="John"
+                    name="firstName"
+                    value={firstName}
+                    onChange={handleFirstNameInput}
+                  />
+                </div>
+                <div className="form-group">
+                  <label className="form-label" htmlFor="lastName">
+                    Last Name:
+                  </label>
+                  <input
+                    className="form-control"
+                    type="text"
+                    id="lastName"
+                    placeholder="Smith"
+                    name="lastName"
+                    value={lastName}
+                    onChange={handleLastNameInput}
+                  />
+                </div>
+                <div className="form-group">
+                  <label className="form-label" htmlFor="email">
+                    E-mail:
+                  </label>
+
+                  <input
+                    className="form-control"
+                    type="text"
+                    id="email"
+                    placeholder="john@abc.com"
+                    name="email"
+                    value={email}
+                    onChange={handleEmailInput}
+                  />
                 </div>
 
                 <div className="form-group">
-                  <div className="col-1 col-ml-auto">
-                    <label className="form-label" htmlFor="lastName">
-                      Last Name:
-                    </label>
-                  </div>
-                  <div className="col-3 col-mr-auto">
-                    <input
-                      className="form-input"
-                      type="text"
-                      id="lastName"
-                      placeholder="John"
-                      name="lastName"
-                      value={lastName}
-                      onChange={handleLastNameInput}
-                    />
-                  </div>
+                  <label className="form-label" htmlFor="password">
+                    Password:
+                  </label>
+                  <input
+                    className="form-control"
+                    placeholder="Password"
+                    type="password"
+                    name="password"
+                    value={password}
+                    onChange={handlePasswordInput}
+                  />
                 </div>
-
-                <div className="form-group">
-                  <div className="col-1 col-ml-auto">
-                    <label className="form-label" htmlFor="email">
-                      E-mail:
-                    </label>
-                  </div>
-                  <div className="col-3 col-mr-auto">
-                    <input
-                      className="form-input"
-                      type="text"
-                      id="email"
-                      placeholder="john@abc.com"
-                      name="email"
-                      value={email}
-                      onChange={handleEmailInput}
-                    />
-                  </div>
-                </div>
-                <div className="form-group">
-                  <div className="col-1 col-ml-auto">
-                    <label className="form-label" htmlFor="password">
-                      Password:
-                    </label>
-                  </div>
-                  <div className="col-3 col-mr-auto">
-                    <input
-                      className="form-input"
-                      placeholder="Password"
-                      type="password"
-                      name="password"
-                      value={password}
-                      onChange={handlePasswordInput}
-                    />
-                  </div>
-                </div>
-
-                <div className="form-group ">
-                  <div className="col-7"></div>
-
-                  <button
-                    className="btn btn-primary col-3 col-mr-auto"
-                    onClick={handleSubmit}
-                  >
-                    Sign up
-                  </button>
-                  {/* sign in link here */}
-                  <Link to={"/signin"}>Sign In Here </Link>
-                </div>
+                <button
+                  type="button"
+                  className="btn btn-primary w-100"
+                  onClick={handleSubmit}
+                >
+                  {" "}
+                  Sign up
+                </button>
+                <br />
+                <Link to={"/signin"}>Sign In Here </Link>
               </form>
             </div>
-          </Col>
-        </Row>
+          </div>
+        </div>
       </Container>
     );
   }

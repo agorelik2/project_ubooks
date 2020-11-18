@@ -87,6 +87,10 @@ function UserBooks(props) {
         <Col size="md-6">
           <Jumbotron>
             <h1>Update Your Book Review</h1>
+            <h5>
+              Click on <i className="far fa-edit fa-2x"></i> next to the book
+              name{" "}
+            </h5>
           </Jumbotron>
           <form>
             <Input
@@ -119,9 +123,10 @@ function UserBooks(props) {
         <Col size="md-6 sm-12">
           <Jumbotron>
             <h1>View All Books Recommended by {props.firstName}</h1>
-            <h3>
-              <Link to="/books">← Back to All Recommended Books</Link>
-            </h3>
+
+            <Link to="/books">
+              <h4>← Back to All Recommended Books</h4>
+            </Link>
           </Jumbotron>
           {books.length ? (
             <List>
