@@ -101,6 +101,7 @@ function UserBooks(props) {
               onChange={handleInputChange}
               name="description"
               placeholder="Review (Optional)"
+              value={formObject.description}
               defaultValue={formObject.description}
             />
             <FormBtn

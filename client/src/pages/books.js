@@ -42,11 +42,11 @@ function Books(props) {
   // }
 
   // Deletes a book from the database with a given id, then reloads books from the db
-  function deleteBook(id) {
-    API.deleteBook(id)
-      .then((res) => loadBooks())
-      .catch((err) => console.log(err));
-  }
+  // function deleteBook(id) {
+  //   API.deleteBook(id)
+  //     .then((res) => loadBooks())
+  //     .catch((err) => console.log(err));
+  // }
 
   // Handles updating component state when the user types into the input field
   function handleInputChange(event) {
@@ -108,7 +108,7 @@ function Books(props) {
         </Col>
         <Col size="md-6 sm-12">
           <Jumbotron>
-            <h1>View All Recommended Books</h1>
+            <h1>Check Out the Recommended Books</h1>
             <Link to={"/books/uid"}>
               <h3>View Books Recommended by {props.firstName}</h3>
             </Link>

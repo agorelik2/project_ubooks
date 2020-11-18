@@ -13,9 +13,9 @@ module.exports = {
     //const id = req.params.id !== "undefined" ? req.params.id : req.user._id;
     // console.log("user id");
     // console.log(typeof id);
-    console.log("Inside userController findById");
-    console.log(req.params.id);
-    console.log("+++++++++++++++++++");
+    // console.log("Inside userController findById");
+    // console.log(req.params.id);
+    // console.log("+++++++++++++++++++");
     // console.log(req.user._id);
     db.User.findById(req.params.id)
       // .populate("book") //AG updated user controller
@@ -33,10 +33,10 @@ module.exports = {
   },
   create: function (req, res) {
     const email = req.body.email;
-    console.log("In USER CONTROLLER, EMAIL");
-    console.log(email);
+    // console.log("In USER CONTROLLER, EMAIL");
+    // console.log(email);
     //console.log(req);
-    console.log("//////////////////////");
+    // console.log("//////////////////////");
     db.User.findOne({ email: email }, (err, user) => {
       if (err) {
         console.log("User.js post error: ", err);
@@ -45,9 +45,9 @@ module.exports = {
           error: `Sorry, already a user with the email: ${email}`,
         });
       } else {
-        console.log("REQ.BODY");
-        console.log(req.body);
-        console.log("=============================");
+        // console.log("REQ.BODY");
+        // console.log(req.body);
+        // console.log("=============================");
         // const hashedPassword = generateHash(req.body.password);
         const newUser = new User({
           email: req.body.email,
