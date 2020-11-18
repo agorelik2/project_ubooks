@@ -19,10 +19,10 @@ export default {
     return axios.get(`/api/books/${id}`);
   },
 
-  updateBook: function (id) {
+  updateBook: function (id, bookData) {
     console.log("In API.js updateBook function", id);
     console.log("////////////////////////////");
-    return axios.put(`/api/books/${id}`);
+    return axios.put(`/api/books/${id}`, bookData);
   },
 
   saveBook: function (bookData) {

@@ -68,9 +68,13 @@ function UserBooks(props) {
     if (formObject.title && formObject.author) {
       console.log("Form Object ID: ", formObject.id);
       const id = formObject.id;
+      //const description = formObject.description;
+      // const title = formObject.title;
+      // const author = formObject.author;
       console.log("Updated Book ID: ", id);
+      console.log("Updated Description: ", formObject.description);
       console.log("+++++++++++++++++++++++++++");
-      API.updateBook(id)
+      API.updateBook(id, formObject)
         .then((res) => loadUserBooks())
         .catch((err) => console.log(err));
     }
