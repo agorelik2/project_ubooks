@@ -14,11 +14,11 @@ function Books(props) {
   const [formObject, setFormObject] = useState({});
   const [term, setTerm] = useState({});
 
-  console.log("User ID:");
-  console.log(props.id);
-  console.log(props.firstName);
-  console.log(props.lastName);
-  console.log(props.email);
+  // console.log("User ID:");
+  // console.log(props.id);
+  // console.log(props.firstName);
+  // console.log(props.lastName);
+  // console.log(props.email);
   //console.log(props);
 
   // Load all books and store them with setBooks
@@ -32,21 +32,6 @@ function Books(props) {
       .then((res) => setBooks(res.data))
       .catch((err) => console.log(err));
   }
-
-  // Loads all books for the user
-  // //ALG populated
-  // function loadBooks() {
-  //   API.getUserBooks()
-  //     .then((res) => setBooks(res.data))
-  //     .catch((err) => console.log(err));
-  // }
-
-  // Deletes a book from the database with a given id, then reloads books from the db
-  // function deleteBook(id) {
-  //   API.deleteBook(id)
-  //     .then((res) => loadBooks())
-  //     .catch((err) => console.log(err));
-  // }
 
   // Handles updating component state when the user types into the input field
   function handleInputChange(event) {
@@ -122,16 +107,12 @@ function Books(props) {
                       {book.title} by {book.author}
                     </strong>
                   </Link>
-                  {/* <DeleteBtn onClick={() => deleteBook(book._id)} /> */}
-                  {/* <Link to={{ pathname: "/search", state: { term: "money" } }}> */}
-                  {/* console.log ({book.title}) */}
-                  {/* <Link to={{ pathname: "/search", state: { term: "money" } }}> */}
+
                   <Link
                     to={{ pathname: "/search", state: { term: book.title } }}
                   >
-                    {/* <Link to={"/search"}> */}
                     <span className="search-btn">
-                      <i class="fas fa-search fa-2x fa-pull-right"></i>
+                      <i className="fas fa-search fa-2x fa-pull-right"></i>
                     </span>
                   </Link>
                 </ListItem>

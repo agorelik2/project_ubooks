@@ -167,3 +167,17 @@ h1:hover {
   color: rgb(12, 12, 12);
   text-shadow: 2px 2px 4px #883d12;
 }
+/* .book-description {
+  background-color: white;
+  float: right;
+}
+
+.book-title {
+  background-color: white;
+} */
+
+* {
+  justify-content: center;
+  font-family: "Raleway", sans-serif;
+  font-size: 12pt;
+}

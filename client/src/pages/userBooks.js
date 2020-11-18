@@ -133,6 +133,7 @@ function UserBooks(props) {
                     </strong>
                   </Link>
                   <DeleteBtn onClick={() => deleteBook(book._id)} />
+                  {"        "}
                   <UpdateBtn onClick={() => updateBookForm(book._id)} />
                 </ListItem>
               ))}

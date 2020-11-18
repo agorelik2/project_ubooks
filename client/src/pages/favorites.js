@@ -21,7 +21,6 @@ function Favorites(props) {
   }, []);
 
   function loadFavorites() {
-    //API.getFavorites()
     API.getFavoritesByUser()
       .then((res) => setSavedBooks(res.data))
       .catch((err) => console.log(err));

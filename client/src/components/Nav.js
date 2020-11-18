@@ -6,8 +6,8 @@ import API from "../utils/API";
 function Nav(props) {
   const [redirect, setRedirect] = useState("");
 
-  console.log("Navigation -  props.id");
-  console.log(props.id);
+  // console.log("Navigation -  props.id");
+  // console.log(props.id);
 
   //Logout functionality
   const logOut = (e) => {
