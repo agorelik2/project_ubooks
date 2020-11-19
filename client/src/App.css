@@ -66,14 +66,14 @@ textarea.form-control {
   height: 150px;
 }
 
-.submit {
-  /* font-size: 2.4em; */
+/* .submit {
+  font-size: 2.4em;
   float: right;
   width: 150px;
   background-color: transparent;
   color: #fff;
   box-shadow: gray;
-}
+} */
 
 /* .submit2 {
   font-size: 1.75em;
@@ -122,11 +122,11 @@ h1:hover {
     0 20px 30px rgba(0, 0, 0, 0.5);
 }
 
-.form-text {
+/* .form-text {
   font-size: 20px;
   color: rgb(5, 5, 5);
   text-shadow: 2px 2px 4px #000000;
-}
+} */
 
 .subt {
   font-family: "Open Sans", sans-serif;
@@ -142,25 +142,25 @@ h1:hover {
   text-shadow: 2px 2px 4px #883d12;
 }
 
-.subt1 {
+/* .subt1 {
   font-family: "Open Sans", sans-serif;
   font-size: 25px;
   color: rgb(252, 249, 249);
   text-shadow: 2px 2px 4px #000000;
-}
-.text1 {
+} */
+/* .text1 {
   font-family: "Open Sans", sans-serif;
   font-size: 20px;
   color: rgb(252, 249, 249);
-  /* text-align: center; */
-}
+  text-align: center; 
+} */
 
-.link2 {
+/* .link2 {
   font-family: "Open Sans", sans-serif;
   font-size: 20px;
   color: rgb(12, 12, 12);
   text-shadow: 2px 2px 4px #883d12;
-}
+} */
 /* .book-description {
   background-color: white;
   float: right;
