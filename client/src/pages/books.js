@@ -73,7 +73,7 @@ function Books(props) {
       <Row>
         <Col size="md-6">
           <Jumbotron>
-            <h1>Recommend a Book</h1>
+            <h2>Recommend a Book</h2>
           </Jumbotron>
           <form>
             <Input
@@ -104,7 +104,7 @@ function Books(props) {
         </Col>
         <Col size="md-6 sm-12">
           <Jumbotron>
-            <h1>Check Out the Recommended Books</h1>
+            <h2>Check Out the Recommended Books</h2>
             <Link to={"/books/uid"}>
               <h4>View Books Recommended by {props.firstName}</h4>
             </Link>
