@@ -80,19 +80,19 @@ function Books(props) {
               onChange={handleInputChange}
               name="title"
               placeholder="Title (required)"
-              defaultValue={formObject.title}
+              value={formObject.title}
             />
             <Input
               onChange={handleInputChange}
               name="author"
               placeholder="Author (required)"
-              defaultValue={formObject.author}
+              value={formObject.author}
             />
             <TextArea
               onChange={handleInputChange}
               name="description"
               placeholder="Review (Optional)"
-              defaultValue={formObject.description}
+              value={formObject.description}
             />
             <FormBtn
               disabled={!(formObject.author && formObject.title)}

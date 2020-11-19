@@ -74,14 +74,17 @@ function UserBooks(props) {
       console.log("Updated Book ID: ", id);
       console.log("Updated Description: ", formObject.description);
       console.log("+++++++++++++++++++++++++++");
-      setFormObject({
-        title: "",
-        author: "",
-        description: "",
-        id: "",
-      });
+
       API.updateBook(id, formObject)
-        .then((res) => loadUserBooks())
+        .then((res) => {
+          loadUserBooks();
+          setFormObject({
+            title: "",
+            author: "",
+            description: "",
+            id: "",
+          });
+        })
         .catch((err) => console.log(err));
     }
   }
@@ -103,12 +106,14 @@ function UserBooks(props) {
               onChange={handleInputChange}
               name="title"
               placeholder="Title (required)"
+              value={formObject.description}
               defaultValue={formObject.title}
             />
             <Input
               onChange={handleInputChange}
               name="author"
               placeholder="Author (required)"
+              value={formObject.description}
               defaultValue={formObject.author}
             />
             <TextArea
