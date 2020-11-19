@@ -50,7 +50,15 @@ function Books(props) {
         description: formObject.description,
         user: props.id, ///ALG user id is being updated with props.id
       })
-        .then((res) => loadBooks())
+
+        .then((res) => {
+          loadBooks();
+          setFormObject({
+            title: "",
+            author: "",
+            description: "",
+          });
+        })
         .catch((err) => console.log(err));
     }
   }
@@ -72,16 +80,19 @@ function Books(props) {
               onChange={handleInputChange}
               name="title"
               placeholder="Title (required)"
+              defaultValue={formObject.title}
             />
             <Input
               onChange={handleInputChange}
               name="author"
               placeholder="Author (required)"
+              defaultValue={formObject.author}
             />
             <TextArea
               onChange={handleInputChange}
               name="description"
               placeholder="Review (Optional)"
+              defaultValue={formObject.description}
             />
             <FormBtn
               disabled={!(formObject.author && formObject.title)}
