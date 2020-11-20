@@ -15,7 +15,7 @@ function SignUp(props) {
   const [redirect, setRedirect] = useState("");
 
   //Valid Input Hook
-  const [isInputValid, setIsInputValid] = useState("yes");
+  const [isInputValid, setIsInputValid] = useState("");
 
   //Hook for email
   const [email, setEmail] = useState("");
@@ -107,7 +107,7 @@ function SignUp(props) {
     console.log("clicked");
 
     validateInput();
-    console.log("isInputValid line 101", isInputValid);
+    console.log("isInputValid line 110", isInputValid);
     if (isInputValid === "yes") {
       Api.signup({
         firstName,
