@@ -77,6 +77,18 @@ function UserBooks(props) {
       API.updateBook(id, formObject)
         .then((res) => loadUserBooks())
         .catch((err) => console.log(err));
+      console.log(formObject.title);
+      console.log(formObject.id);
+      console.log(formObject.description);
+      setFormObject({
+        title: "",
+        author: "",
+        description: "",
+      });
+      console.log("Form Object AFTER:");
+      console.log(formObject.title);
+      console.log(formObject.id);
+      console.log(formObject.description);
     }
   }
 
