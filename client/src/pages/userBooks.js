@@ -74,17 +74,8 @@ function UserBooks(props) {
       console.log("Updated Book ID: ", id);
       console.log("Updated Description: ", formObject.description);
       console.log("+++++++++++++++++++++++++++");
-
       API.updateBook(id, formObject)
-        .then((res) => {
-          loadUserBooks();
-          setFormObject({
-            title: "",
-            author: "",
-            description: "",
-            id: "",
-          });
-        })
+        .then((res) => loadUserBooks())
         .catch((err) => console.log(err));
     }
   }
@@ -95,7 +86,7 @@ function UserBooks(props) {
       <Row>
         <Col size="md-6">
           <Jumbotron>
-            <h1>Update Your Book Review</h1>
+            <h2>Update Your Book Review</h2>
             <h5>
               Click on <i className="far fa-edit fa-2x"></i> next to the book
               name{" "}
@@ -106,14 +97,12 @@ function UserBooks(props) {
               onChange={handleInputChange}
               name="title"
               placeholder="Title (required)"
-              value={formObject.description}
               defaultValue={formObject.title}
             />
             <Input
               onChange={handleInputChange}
               name="author"
               placeholder="Author (required)"
-              value={formObject.description}
               defaultValue={formObject.author}
             />
             <TextArea
@@ -133,7 +122,7 @@ function UserBooks(props) {
         </Col>
         <Col size="md-6 sm-12">
           <Jumbotron>
-            <h1>View All Books Recommended by {props.firstName}</h1>
+            <h2>View All Books Recommended by {props.firstName}</h2>
 
             <Link to="/books">
               <h4>← Back to All Recommended Books</h4>

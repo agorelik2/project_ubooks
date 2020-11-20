@@ -46,27 +46,32 @@ function Detail(props) {
             <h1>
               {book.title} by {book.author}
             </h1>
-            <h3>
+            <h4>
               Recommended by {ruser.firstName} {ruser.lastName}
-            </h3>
+            </h4>
           </Jumbotron>
         </Col>
       </Row>
       <Row>
         <Col size="md-10 md-offset-1">
           <article>
-            <h1>Description</h1>
-            <p>{book.description}</p>
+            <h2>Reviews</h2> <br></br>
+            <p>
+              <strong>
+                {ruser.firstName} {ruser.lastName}
+              </strong>
+              : {book.description}
+            </p>
           </article>
         </Col>
       </Row>
       <Row>
-        <Col size="md-2">
+        <Col size="md-10">
           <Link to="/books">← Back to All Recommended Books</Link>
         </Col>
       </Row>
       <Row>
-        <Col size="md-2">
+        <Col size="md-10">
           <Link to="/books/uid">← Back to Books Recommended by you</Link>
         </Col>
       </Row>

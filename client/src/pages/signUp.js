@@ -24,6 +24,8 @@ function SignUp(props) {
   //handle input for email
   const handleEmailInput = (event) => {
     setEmail(event.target.value);
+    setErrorEmail("");
+    setErrorPassword("");
     console.log(email);
   };
 
@@ -35,6 +37,9 @@ function SignUp(props) {
   const handlePasswordInput = (event) => {
     setPassword(event.target.value);
     console.log(password);
+    if (password.length > 6 && errorPassword != "") {
+      setErrorPassword("");
+    }
   };
 
   //firstName hook
@@ -63,9 +68,8 @@ function SignUp(props) {
   };
 
   //Validate User's Input
-  function validateInput() {
-    setIsInputValid("yes");
-    console.log("isInputValid line 67: ", isInputValid);
+  const validateInput = () => {
+    console.log("isInputValid line 73: ", isInputValid);
     let fl = firstName.length;
     console.log("fl:", fl);
     if (!firstName || fl < 2) {
@@ -99,16 +103,17 @@ function SignUp(props) {
       setIsInputValid("no");
       console.log("isInputValid password: ", isInputValid);
     }
-  }
+    return isInputValid;
+  };
 
   //Saving person in database
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log("clicked");
-
+    setIsInputValid("yes");
     validateInput();
-    console.log("isInputValid line 110", isInputValid);
-    if (isInputValid === "yes") {
+    console.log("isInputValid line 115", isInputValid);
+    if (isInputValid !== "no") {
       Api.signup({
         firstName,
         lastName,
@@ -118,13 +123,14 @@ function SignUp(props) {
         .then((response) => {
           console.log("signup response: ");
           console.log(response);
-          if (response.status === 200) {
+          console.log(response.status);
+          if (response.status === 200 && !response.data.errors) {
             // update App.js state
             props.updateUser(response.data);
             //props.id = response.data._id;
             console.log(props.id);
             console.log("~~~~~~~~~~~~~~~)");
-            console.log("response data from SignUp 110");
+            console.log("response data from SignUp 132");
             console.log(response.data);
             // update the state to redirect to books
             setRedirect("/books");
@@ -139,7 +145,7 @@ function SignUp(props) {
           setErrorEmail(error);
         });
     } else {
-      setErrorPassword("*Invalid Entry, Please Correct");
+      //setErrorPassword("*Invalid Entry, Please Correct");
     }
   };
 
