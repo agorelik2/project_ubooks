@@ -14,8 +14,12 @@ function SignUp(props) {
   //Redirect hook
   const [redirect, setRedirect] = useState("");
 
+  //Valid Input Hook
+  const [isInputValid, setIsInputValid] = useState("yes");
+
   //Hook for email
   const [email, setEmail] = useState("");
+  const [errorEmail, setErrorEmail] = useState("");
 
   //handle input for email
   const handleEmailInput = (event) => {
@@ -25,6 +29,7 @@ function SignUp(props) {
 
   //Password hook
   const [password, setPassword] = useState("");
+  const [errorPassword, setErrorPassword] = useState("");
 
   //Handle input for password
   const handlePasswordInput = (event) => {
@@ -34,50 +39,108 @@ function SignUp(props) {
 
   //firstName hook
   const [firstName, setFirstName] = useState("");
+  const [errorFirstName, setErrorFirstName] = useState("");
 
   //Handle input for first name
   const handleFirstNameInput = (event) => {
     setFirstName(event.target.value);
-    console.log(firstName);
+    if (firstName.length > 1 && errorFirstName != "") {
+      setErrorFirstName("");
+    }
   };
 
   //Last name hook
   const [lastName, setLastName] = useState("");
+  const [errorLastName, setErrorLastName] = useState("");
 
   //Handle input for last name
   const handleLastNameInput = (event) => {
     setLastName(event.target.value);
     console.log(lastName);
+    if (lastName.length > 1 && errorLastName != "") {
+      setErrorLastName("");
+    }
   };
+
+  //Validate User's Input
+  function validateInput() {
+    setIsInputValid("yes");
+    console.log("isInputValid line 67: ", isInputValid);
+    let fl = firstName.length;
+    console.log("fl:", fl);
+    if (!firstName || fl < 2) {
+      setErrorFirstName("*Invalid First Name");
+      setIsInputValid("no");
+      console.log("errorFirstName", errorFirstName);
+      console.log("isInputValid firstName: ", isInputValid);
+    }
+
+    let ll = lastName.length;
+    console.log(ll);
+    if (!lastName || ll < 2) {
+      console.log("ll:", ll);
+      setErrorLastName("*Invalid Last Name");
+      setIsInputValid("no");
+      console.log("errorLastName", errorLastName);
+      console.log("isInputValid lastName: ", isInputValid);
+    }
+    const pattern = new RegExp(
+      /^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i
+    );
+    if (!pattern.test(email)) {
+      setErrorEmail("*Invalid Email Address");
+      setIsInputValid("no");
+      console.log("isInputValid email: ", isInputValid);
+    }
+
+    let pl = password.length;
+    if (!password || pl < 6) {
+      setErrorPassword("*Password has to be at least 6 char long");
+      setIsInputValid("no");
+      console.log("isInputValid password: ", isInputValid);
+    }
+  }
 
   //Saving person in database
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log("clicked");
-    Api.signup({
-      firstName,
-      lastName,
-      email,
-      password,
-    })
-      .then((response) => {
-        console.log("signup response: ");
-        console.log(response);
-        if (response.status === 200) {
-          // update App.js state
-          props.updateUser(response.data);
-          //props.id = response.data._id;
-          console.log(props.id);
-          console.log("~~~~~~~~~~~~~~~)");
-          console.log("response data from SignUp 69");
-          console.log(response.data);
-          // update the state to redirect to books
-          setRedirect("/books");
-        }
+
+    validateInput();
+    console.log("isInputValid line 101", isInputValid);
+    if (isInputValid === "yes") {
+      Api.signup({
+        firstName,
+        lastName,
+        email,
+        password,
       })
-      .catch((error) => {
-        console.log(error);
-      });
+        .then((response) => {
+          console.log("signup response: ");
+          console.log(response);
+          if (response.status === 200) {
+            // update App.js state
+            props.updateUser(response.data);
+            //props.id = response.data._id;
+            console.log(props.id);
+            console.log("~~~~~~~~~~~~~~~)");
+            console.log("response data from SignUp 110");
+            console.log(response.data);
+            // update the state to redirect to books
+            setRedirect("/books");
+          } else {
+            if (response.status === 201) {
+              setErrorPassword(response.data.error);
+            }
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+          setErrorEmail(error);
+        });
+    } else {
+      setErrorPassword("*Invalid Entry, Please Correct");
+    }
   };
 
   //If redirect is true redirect, or else show signin page
@@ -119,6 +182,9 @@ function SignUp(props) {
                     value={firstName}
                     onChange={handleFirstNameInput}
                   />
+                  <p style={{ color: "red", fontSize: "15px" }}>
+                    {errorFirstName}
+                  </p>
                 </div>
                 <div className="form-group">
                   <label className="form-label" htmlFor="lastName">
@@ -133,6 +199,9 @@ function SignUp(props) {
                     value={lastName}
                     onChange={handleLastNameInput}
                   />
+                  <p style={{ color: "red", fontSize: "15px" }}>
+                    {errorLastName}
+                  </p>
                 </div>
                 <div className="form-group">
                   <label className="form-label" htmlFor="email">
@@ -148,6 +217,7 @@ function SignUp(props) {
                     value={email}
                     onChange={handleEmailInput}
                   />
+                  <p style={{ color: "red", fontSize: "15px" }}>{errorEmail}</p>
                 </div>
 
                 <div className="form-group">
@@ -162,6 +232,9 @@ function SignUp(props) {
                     value={password}
                     onChange={handlePasswordInput}
                   />
+                  <p style={{ color: "red", fontSize: "15px" }}>
+                    {errorPassword}
+                  </p>
                 </div>
                 <button
                   type="button"
@@ -169,10 +242,11 @@ function SignUp(props) {
                   onClick={handleSubmit}
                 >
                   {" "}
-                  Sign up
+                  Sign Up
                 </button>
-                <br />
-                <Link to={"/signin"}>Sign In Here </Link>
+                <br></br>
+                <br></br>
+                <Link to={"/signin"}> Already a Member? Sign In </Link>
               </form>
             </div>
           </div>

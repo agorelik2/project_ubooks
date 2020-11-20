@@ -33,17 +33,20 @@ module.exports = {
   },
   create: function (req, res) {
     const email = req.body.email;
-    // console.log("In USER CONTROLLER, EMAIL");
-    // console.log(email);
-    //console.log(req);
-    // console.log("//////////////////////");
+    console.log("In USER CONTROLLER, email: ", email);
     db.User.findOne({ email: email }, (err, user) => {
+      console.log("Wrong Email???");
+      console.log("Error: ", err);
+      console.log("~~~~~~~~~~~~~~~~~~~~");
       if (err) {
         console.log("User.js post error: ", err);
       } else if (user) {
-        res.json({
-          error: `Sorry, already a user with the email: ${email}`,
-        });
+        res
+          .status(201)
+          .send({ error: `Sorry, already a user with the email: ${email}` });
+        // res.json({
+        //   error: `Sorry, already a user with the email: ${email}`,
+        // });
       } else {
         // console.log("REQ.BODY");
         // console.log(req.body);

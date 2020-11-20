@@ -6,6 +6,7 @@ import API from "../utils/API";
 import { Col, Row, Container } from "../components/Grid";
 import { List, ListItem } from "../components/List";
 import { Input, TextArea, FormBtn } from "../components/Form";
+import { set } from "mongoose";
 
 //Signin component
 function SignIn(props) {
@@ -13,7 +14,7 @@ function SignIn(props) {
 
   //Email hook
   const [emailInput, setEmailInput] = useState("");
-
+  const [errorEmail, setErrorEmail] = useState("");
   //Setting the state of email
   const handleEmailInput = (event) => {
     setEmailInput(event.target.value);
@@ -22,11 +23,14 @@ function SignIn(props) {
 
   //Password Hook
   const [passwordInput, setPasswordInput] = useState("");
+  const [errorPassword, setErrorPassword] = useState("");
 
   //Setting the state of password
   const handlePasswordInput = (event) => {
     setPasswordInput(event.target.value);
     console.log(passwordInput);
+    let pl = passwordInput.length;
+    console.log(pl);
   };
 
   //Redirect hook
@@ -35,24 +39,31 @@ function SignIn(props) {
   const handleSignIn = (event) => {
     event.preventDefault();
     console.log("handleSignIn");
-    API.login({
-      email: emailInput,
-      password: passwordInput,
-    })
-      .then((response) => {
-        console.log("login response: ");
-        console.log(response);
-        if (response.status === 200) {
-          // update App.js state
-          props.updateUser(response.data);
-          // update the state to redirect to books
-          setRedirect("/books");
-        }
+    if (emailInput && passwordInput) {
+      API.login({
+        email: emailInput,
+        password: passwordInput,
       })
-      .catch((error) => {
-        console.log("login error: ");
-        console.log(error);
-      });
+        .then((response) => {
+          console.log("login response: ");
+          console.log(response);
+          if (response.status === 200) {
+            // update App.js state
+            props.updateUser(response.data);
+            // update the state to redirect to books
+            setRedirect("/books");
+          }
+        })
+        .catch((error) => {
+          console.log("login error: ");
+          console.log(error);
+          setErrorEmail("");
+          setErrorPassword("*Invalid email or password");
+        });
+    } else {
+      setErrorEmail("*Please enter your email");
+      setErrorPassword("*Please enter your password");
+    }
   };
   //If redirect is true redirect, or else show signup page
   if (redirect) {
@@ -93,9 +104,7 @@ function SignIn(props) {
                     type="text"
                     placeholder="john@abc.com"
                   />
-                  {/* <p style={{ color: "red", fontSize: "20px" }}>
-            {this.state.errorUsername}
-          </p> */}
+                  <p style={{ color: "red", fontSize: "15px" }}>{errorEmail}</p>
                 </div>
                 <div className="form-group">
                   <label className="form-label" htmlFor="password">
@@ -109,9 +118,9 @@ function SignIn(props) {
                     type="password"
                     placeholder="Password"
                   />
-                  {/* <p style={{ color: "red", fontSize: "20px" }}>
-            {this.state.errorPassword}
-          </p> */}
+                  <p style={{ color: "red", fontSize: "15px" }}>
+                    {errorPassword}
+                  </p>
                 </div>
                 <button
                   type="button"
@@ -121,8 +130,9 @@ function SignIn(props) {
                   {" "}
                   Sign In
                 </button>
-                <br />
-                <Link to={"/signup"}>Sign Up Here </Link>
+                <br></br>
+                <br></br>
+                <Link to={"/signup"}>No Account? Sign Up Here</Link>
               </form>
             </div>
           </div>
